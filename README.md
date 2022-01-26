@@ -12,3 +12,7 @@ The full database schema and seed file for this exercise has already been implem
 4. Edit the `SHADOW_DATABASE_URL` variable in `.env`, swapping `YOUR_SHADOW_DATABASE_URL` for the URL of the shadow database you created in the earlier exercises. Leave `?schema=shadow` at the end.
 5. Run `npm ci` to install the project dependencies.
 6. Run `npx prisma migrate reset` to execute the existing migrations & data seed. Press `y` when it asks if you're sure.
+
+## Instructions
+
+- Work through each requirement in the `requirements` directory in numerical order
