@@ -7,4 +7,5 @@ There is another way to implement many-to-many relationships in Prisma: *explici
 [Explicit many-to-many relationships](https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#explicit-many-to-many-relations)
 
 - Using the documentation in the link provided above, change your implicit many-to-many into an explicit many-to-many.
+- Update the seed file to be compatible with an explicit many-to-many.
 - Update the Prisma queries in your controller functions to be compatible with an explicit many-to-many.
