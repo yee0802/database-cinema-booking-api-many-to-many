@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/boolean-uk/cinema-booking-api-many-to-many#readme",
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "prisma": "^3.8.1"
   },
