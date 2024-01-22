@@ -69,7 +69,7 @@ async function createScreens() {
 }
 
 async function createSeats() {
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 1; i <= 10; i++) {
     const seat = await prisma.seat.create({
       data: {
         seatRow: "A",
