@@ -3,7 +3,7 @@ const { getSeatsByScreenDb } = require("../domains/screens.domain");
 
 async function createTicket(req, res) {
   try {
-    const { customerId, screeningId, seatRow, seatNumber } = req.body;
+    const { customerId, screeningId, seatRows, seatNumbers } = req.body;
 
     const screenId = Number(req.params.id);
 
@@ -21,20 +21,25 @@ async function createTicket(req, res) {
         .send({ error: "No seats found with provided screen ID" });
     }
 
-    const seat = seats.find(
-      (seat) =>
-        seat.seatRow === seatRow && seat.seatNumber === Number(seatNumber)
-    );
+    const seatIds = [];
 
-    if (!seat) {
-      return res
-        .status(404)
-        .send({ error: "No seat with provided row & number" });
+    for (let i = 0; i < seatRows.length; i++) {
+      const seat = seats.find(
+        (seat) =>
+          seat.seatRow === seatRows[i] &&
+          seat.seatNumber === Number(seatNumbers[i])
+      );
+
+      if (!seat) {
+        return res
+          .status(404)
+          .send({ error: "No seat with provided row & number" });
+      }
+
+      seatIds.push(seat.id);
     }
 
-    const seatId = seat.id;
-
-    const createdTicket = await createTicketDb(req.body, seatId);
+    const createdTicket = await createTicketDb(req.body, seatIds);
 
     return res.status(201).send({ ticket: createdTicket });
   } catch (e) {
