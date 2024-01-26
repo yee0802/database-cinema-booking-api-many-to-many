@@ -1,7 +1,7 @@
 const { Prisma } = require("@prisma/client");
 const prisma = require("../utils/prisma");
 
-async function createTicketDb(request_body, seatId) {
+async function createTicketDb(request_body, seatIds) {
   const { customerId, screeningId } = request_body;
 
   const createdTicket = await prisma.ticket.create({
@@ -17,7 +17,7 @@ async function createTicketDb(request_body, seatId) {
         },
       },
       seats: {
-        connect: [{ id: seatId }],
+        connect: seatIds.map((seatId) => ({ id: seatId })),
       },
     },
     include: {
